@@ -38,11 +38,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
-        
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
+        val path = Dijkstra.shortestPath(map)
+
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -61,11 +61,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -92,11 +92,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -119,11 +119,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -146,11 +146,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -175,11 +175,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 
@@ -240,11 +240,11 @@ class DijkstraTest {
         """.trimIndent()
 
         val map = readMaze(mapString)
-        val path = shortestPath(map)
+        val path = Dijkstra.shortestPath(map)
 
-        assertTrue(path.contains(map.start))
-        assertTrue(path.contains(map.end))
         assertTrue(path.isPath())
+        assertEquals(map.start, path.first())
+        assertEquals(map.end, path.last())
         assertEquals(marked.count { it == '*' }, path.size)
     }
 }

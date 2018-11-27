@@ -5,6 +5,20 @@ import java.lang.StringBuilder
 import kotlin.math.abs
 import kotlin.math.max
 
+/* Graph algorithms are usually expressed in terms of nodes linked by edges;
+ * an object graph is a natural implementation.
+ * Since we have a grid graph here, we can work with an array of nodes instead;
+ * edges remain implicit.
+ *
+ * I'm interested in the promise of _inline classes_ as low-cost means for
+ * abstraction. Therefore I use them here, accepting that some work may be
+ * done repeatedly (e.g. computing `Labyrinth.start`, `Labyrinth.neighbours(v)`).
+ *
+ * Also, I appreciate functional(-style) programming so the data structures
+ * are immutable, i.e. all functions on them are pure and stored properties
+ * are not leaked.
+ */
+
 /**
  * A maze to find our way through.
  *
@@ -43,10 +57,11 @@ inline class Labyrinth(private val grid: Array<Array<NodeType>>) {
         }.filter { typeAt(it) != NodeType.Wall }
 
     fun contains(v: Node): Boolean =
-        v.row in 0..(rows - 1) && v.column in 0..(columns - 1)
+            v.row in 0..(rows - 1) && v.column in 0..(columns - 1)
 
+    @Suppress("MemberVisibilityCanBePrivate") // KT-26508
     fun typeAt(v: Node): NodeType =
-        grid[v.row][v.column]
+            grid[v.row][v.column]
 
     /**
      * Returns all nodes adjacent to `v` that can be moved to, i.e.
@@ -54,15 +69,15 @@ inline class Labyrinth(private val grid: Array<Array<NodeType>>) {
      */
     fun neighbours(v: Node): Set<Node> {
         return sequenceOf(
-            Pair(v.row - 1, v.column - 1),
-            Pair(v.row - 1, v.column),
-            Pair(v.row - 1, v.column + 1),
-            Pair(v.row, v.column - 1),
-            // Pair(v.row, v.column), <-- that's v!
-            Pair(v.row, v.column + 1),
-            Pair(v.row + 1, v.column - 1),
-            Pair(v.row + 1, v.column),
-            Pair(v.row + 1, v.column + 1)
+                Pair(v.row - 1, v.column - 1),
+                Pair(v.row - 1, v.column),
+                Pair(v.row - 1, v.column + 1),
+                Pair(v.row, v.column - 1),
+                // Pair(v.row, v.column), <-- that's v!
+                Pair(v.row, v.column + 1),
+                Pair(v.row + 1, v.column - 1),
+                Pair(v.row + 1, v.column),
+                Pair(v.row + 1, v.column + 1)
         ).map { Node(it) }.filter { contains(it) && typeAt(it) != NodeType.Wall }.toSet()
     }
 
@@ -86,12 +101,12 @@ inline class Labyrinth(private val grid: Array<Array<NodeType>>) {
     }
 
     override fun toString(): String =
-        grid.joinToString("\n") { row ->
-            row.joinToString("") { it.toString() }
-        }
+            grid.joinToString("\n") { row ->
+                row.joinToString("") { it.toString() }
+            }
 
     operator fun plus(path: List<Node>): MazeWithPath =
-        MazeWithPath(Pair(this, path))
+            MazeWithPath(Pair(this, path))
 }
 
 /**
@@ -122,7 +137,7 @@ inline class Node(private val coordinates: Pair<Int, Int>) {
         get() = coordinates.second
 
     fun isAdjacentTo(other: Node) =
-        max(abs(other.column - this.column), abs(other.row - this.row)) == 1
+            max(abs(other.column - this.column), abs(other.row - this.row)) == 1
 }
 
 /**
@@ -135,10 +150,10 @@ enum class NodeType {
     Wall;
 
     override fun toString(): String =
-        when (this) {
-            NodeType.Start -> "S"
-            NodeType.End -> "X"
-            NodeType.Regular -> "."
-            NodeType.Wall -> "B"
-        }
+            when (this) {
+                NodeType.Start   -> "S"
+                NodeType.End     -> "X"
+                NodeType.Regular -> "."
+                NodeType.Wall    -> "B"
+            }
 }
