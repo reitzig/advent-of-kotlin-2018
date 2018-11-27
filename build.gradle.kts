@@ -31,5 +31,6 @@ dependencies {
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
     languageVersion = "1.3"
+    jvmTarget = "1.8"
     freeCompilerArgs = listOf("-progressive", "-XXLanguage:+InlineClasses", "-Xnew-inference")
 }
