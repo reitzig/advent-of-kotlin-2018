@@ -4,7 +4,7 @@ My solutions for Kotlin Academy's
     [Advent of Kotlin](https://blog.kotlin-academy.com/the-advent-of-kotlin-2018-week-1-229e442a143)
 (2018).
 
- * Week 1: [Shortes Paths](https://github.com/reitzig/advent-of-kotlin-2018/tree/master/src/main/kotlin/advent/week1)
+ * Week 1: [Shortest Paths](https://github.com/reitzig/advent-of-kotlin-2018/tree/master/src/main/kotlin/advent/week1)
 
 ### Building
 
