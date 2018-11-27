@@ -1,4 +1,4 @@
-package week1
+package advent.week1
 
 import java.lang.IllegalArgumentException
 import java.lang.StringBuilder

@@ -1,6 +1,6 @@
-package week1
+package advent.week1
 
-import org.junit.jupiter.api.Test
+import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -10,7 +10,7 @@ import kotlin.test.assertTrue
  * via the
  *   [problem statement](https://blog.kotlin-academy.com/the-advent-of-kotlin-2018-week-1-229e442a143).
  */
-internal class DijkstraTest {
+class DijkstraTest {
 
     fun List<Node>.isPath() : Boolean {
         return mapIndexed { i, node ->

@@ -1,4 +1,4 @@
-package week1
+package advent.week1
 
 /**
  * Reads in a maze/labyrinth/map from stdin, and
